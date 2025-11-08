@@ -1,0 +1,56 @@
+# Build output
+/target/
+out/
+build/
+
+# IDE settings
+.idea/
+*.iml
+.vscode/
+*.classpath
+*.project
+*.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.orig
+
+# Dependency cache (Maven, Gradle, etc.)
+.mvn/
+.gradle/
+!/.mvn/wrapper/maven-wrapper.jar  # keep the Maven wrapper if you use it
+
+# Environment or local configs
+.env
+db.properties
+*.local.properties
+*.credentials
+*.secret
+*.pem
+*.key
+
+# Backup or runtime files
+*.jar
+*.war
+*.ear
+*.class
+hs_err_pid*
+replay_pid*
+
+# MySQL dump or local test data
+*.sql
+*.dump
+*.bak.sql
+
+# Java language server and VS Code cache
+.projectile
+.lsp/
+
