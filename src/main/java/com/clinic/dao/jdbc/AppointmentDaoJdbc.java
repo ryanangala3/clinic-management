@@ -72,8 +72,35 @@ public class AppointmentDaoJdbc implements AppointmentDao {
   }
 
   @Override
+  public List<Appointment> listWindow(int daysBack, int daysAhead) {
+    String sql = """
+        SELECT id, patient_id, doctor_id, start_time, end_time, reason, status, created_at
+        FROM appointments
+        WHERE start_time BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY)
+                            AND DATE_ADD(NOW(), INTERVAL ? DAY)
+        ORDER BY start_time DESC
+        """;
+    try (Connection c = DBconnection.get();
+         PreparedStatement ps = c.prepareStatement(sql)) {
+      ps.setInt(1, daysBack);
+      ps.setInt(2, daysAhead);
+      try (ResultSet rs = ps.executeQuery()) {
+        List<Appointment> out = new ArrayList<>();
+        while (rs.next()) out.add(map(rs));
+        return out;
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Failed to list appointments window", e);
+    }
+  }
+
+  @Override
   public List<Appointment> findUpcomingForDoctor(int doctorId, LocalDateTime from) {
-    String sql = "SELECT * FROM appointments WHERE doctor_id=? AND start_time >= ? AND status='BOOKED' ORDER BY start_time";
+    String sql = """
+        SELECT * FROM appointments
+        WHERE doctor_id = ? AND start_time >= ? AND status='BOOKED'
+        ORDER BY start_time
+        """;
     try (Connection c = DBconnection.get();
          PreparedStatement ps = c.prepareStatement(sql)) {
       ps.setInt(1, doctorId);
@@ -84,7 +111,7 @@ public class AppointmentDaoJdbc implements AppointmentDao {
         return out;
       }
     } catch (SQLException e) {
-      throw new RuntimeException("Failed to list upcoming", e);
+      throw new RuntimeException("Failed to list doctor appointments", e);
     }
   }
 

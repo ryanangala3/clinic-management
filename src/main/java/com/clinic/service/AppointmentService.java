@@ -35,9 +35,9 @@ public class AppointmentService {
   public boolean cancel(int id) { return dao.cancel(id); }
   public boolean complete(int id) { return dao.complete(id); }
 
-  public List<Appointment> listUpcoming() {
-    return dao.listUpcoming(LocalDateTime.now().minusMinutes(1));
-  }
+    public List<Appointment> listWindow(int back, int ahead) {
+    return dao.listWindow(back, ahead);
+}
 
   private void validate(Appointment a) {
     if (a.getPatientId() == null) throw new ValidationException("Patient is required");

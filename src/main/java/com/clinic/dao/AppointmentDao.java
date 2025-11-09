@@ -13,4 +13,5 @@ public interface AppointmentDao {
   List<Appointment> findUpcomingForDoctor(int doctorId, LocalDateTime from);
   boolean existsOverlap(int doctorId, LocalDateTime start, LocalDateTime end);
   List<Appointment> listUpcoming(LocalDateTime from);
+  List<Appointment> listWindow(int daysBack, int daysAhead);
 }

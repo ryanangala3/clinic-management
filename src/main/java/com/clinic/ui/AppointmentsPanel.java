@@ -179,7 +179,7 @@ private void refreshTable() {
   try { var s = tfTo.getText().trim();   if (!s.isEmpty())   to   = java.time.LocalDate.parse(s); } catch (Exception ignored) {}
 
   // get data from service
-  var appts = service.listUpcoming(); // keep your existing method
+  var appts = service.listWindow(90, 180); // keep your existing method
   // optional: if you add listBetween(from, to), call it when either date is provided
 
   for (var a : appts) {
