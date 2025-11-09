@@ -12,8 +12,8 @@
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/clinic-desktop.git
-   cd clinic-desktop
+   git clone https://github.com/ryanangala3/clinic-management
+   cd clinic-management
    ```
 
 2. **Set up the database**
