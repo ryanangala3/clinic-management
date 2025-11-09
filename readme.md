@@ -1,4 +1,4 @@
-# 🏥 Clinic Desktop Application
+# 🏥 Clinic Management Application
 
 [![Java](https://img.shields.io/badge/Java-21-blue?logo=java)](https://openjdk.org/projects/jdk/21/)
 [![Maven](https://img.shields.io/badge/Build-Maven-orange?logo=apache-maven)](https://maven.apache.org/)
